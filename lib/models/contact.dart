@@ -7,6 +7,10 @@ class Contact {
 
   @override
   String toString() {
-    return 'Contact{name:$name, accountNumber:$accountNumber} ';
+    return 'Contact{id: $id, name:$name, accountNumber:$accountNumber} ';
+  }
+
+  Map<String, dynamic> toMap() {
+    return {'id': id, 'name': name, 'accountNumber': accountNumber};
   }
 }
