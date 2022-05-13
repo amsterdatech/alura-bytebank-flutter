@@ -1,10 +1,15 @@
-import 'package:bytebank/screens/contatos/contact_form.dart';
-import 'package:bytebank/screens/contatos/contacts_list.dart';
+import 'package:bytebank/database/app_database.dart';
 import 'package:bytebank/screens/dashboard.dart';
 import 'package:flutter/material.dart';
 
+import 'models/contact.dart';
+
 void main() {
   runApp(const Bytebank());
+
+  save(Contact(0, 'William', 6666)).then((id) {
+    findAll().then((contacts) => debugPrint(contacts.toString()));
+  });
 }
 
 class Bytebank extends StatelessWidget {
@@ -25,7 +30,9 @@ class Bytebank extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green,),
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.green,
+        ),
 
         buttonTheme: ButtonThemeData(
           buttonColor: Colors.greenAccent[700],
