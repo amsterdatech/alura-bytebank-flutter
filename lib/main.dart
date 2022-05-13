@@ -1,4 +1,5 @@
-import 'package:bytebank/screens/transferencia/lista.dart';
+import 'package:bytebank/screens/contacts_list.dart';
+import 'package:bytebank/screens/dashboard.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -23,13 +24,14 @@ class Bytebank extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.green,
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.green,),
+
         buttonTheme: ButtonThemeData(
           buttonColor: Colors.greenAccent[700],
           textTheme: ButtonTextTheme.primary,
         ),
       ),
-      home: ListaTransferencias(),
+      home: Dashboard(),
     );
   }
 }
