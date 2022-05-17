@@ -1,4 +1,5 @@
 import 'package:bytebank/database/app_database.dart';
+import 'package:bytebank/database/contact_dao.dart';
 import 'package:bytebank/screens/dashboard.dart';
 import 'package:flutter/material.dart';
 
@@ -6,21 +7,7 @@ import 'models/contact.dart';
 
 void main() {
   runApp(const Bytebank());
-  // save(Contact(4, 'Will', 23000)).then((id) {
-  //   debugPrint('Id: $id');
-  // });
-  // save(Contact(4, 'Ariane', 6666)).then((id) {
-  //   debugPrint('Id: $id');
-  // });
-  /*  save(
-    Transaction(
-      12350.0,
-      const Contact(id: 0, name: 'Fulano', accountNumber: 8500),
-    ),
-  ).then((transaction) {
-    debugPrint('transaction: $transaction');
-  }); */
-   findAll().then((transactions) {
+  ContactDao().findAll().then((transactions) {
     debugPrint('transactions: $transactions');
   });
 }
@@ -35,15 +22,6 @@ class Bytebank extends StatelessWidget {
       title: 'Bytebank',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primaryColor: Colors.green[900] ?? Colors.green,
         colorScheme: ColorScheme.fromSwatch(
           primarySwatch: Colors.green,

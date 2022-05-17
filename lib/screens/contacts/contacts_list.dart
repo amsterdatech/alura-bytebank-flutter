@@ -1,44 +1,50 @@
 import 'package:flutter/material.dart';
 
-import '../../database/app_database.dart';
+import '../../database/contact_dao.dart';
 import '../../models/contact.dart';
 import '../contacts/contact_form.dart';
 
+class ContactList extends StatefulWidget {
+  @override
+  State<ContactList> createState() => _ContactListState();
+}
 
-class ContactList extends StatelessWidget {
-  final List<Contact> contacts = [];
+class _ContactListState extends State<ContactList> {
+  final ContactDao _dao = ContactDao();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Contacts'),
-        ),
-        body: FutureBuilder<List<Contact>>(
-          future: findAll(),
-          builder: (context, snapshot) {
-            final List<Contact>? contacts = snapshot.data;
-            return ListView.builder(
-              itemBuilder: (context, index) {
-                final Contact contact = contacts![index];
-                return _ContactItem(contact);
-              },
-              itemCount: contacts?.length ?? 0,
-            );
-          },),
-        floatingActionButton: FloatingActionButton(
-        onPressed: ()
-    {
-      Navigator.of(context)
-          .push(
-        MaterialPageRoute(
-          builder: (context) => ContactForm(),
-        ),
-      )
-          .then((newContact) => debugPrint(newContact.toString()));
-    },
-    child: Icon(Icons.add),
-    ),
+      appBar: AppBar(
+        title: Text('Contacts'),
+      ),
+      body: FutureBuilder<List<Contact>>(
+        initialData: [],
+        future: _dao.findAll(),
+        builder: (context, snapshot) {
+          final List<Contact>? contacts = snapshot.data;
+          return ListView.builder(
+            itemBuilder: (context, index) {
+              final Contact contact = contacts![index];
+              return _ContactItem(contact);
+            },
+            itemCount: contacts?.length ?? 0,
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  builder: (context) => ContactForm(),
+                ),
+              )
+              .then((newContact) => debugPrint(newContact.toString()))
+              .then((value) => setState(() {}));
+        },
+        child: Icon(Icons.add),
+      ),
     );
   }
 }
