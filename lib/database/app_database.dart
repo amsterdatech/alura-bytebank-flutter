@@ -8,21 +8,23 @@ Future<Database> createDatabase() async {
   return openDatabase(
     join(
       await getDatabasesPath(),
-      'bytebank1.db',
+      'bytebank.db',
     ),
     onCreate: (db, version) {
       return db.execute('CREATE TABLE contacts('
+          'id int'
           'name VARCHAR, '
           'account_number INTEGER)');
     },
     version: 1,
-    /* onDowngrade: onDatabaseDowngradeDelete, */
+      onDowngrade: onDatabaseDowngradeDelete
   );
 }
 
 Future<int> save(Contact contact) async {
   final Database db = await createDatabase();
   final Map<String, dynamic> contactMap = {};
+  contactMap['id'] = contact.id;
   contactMap['name'] = contact.name;
   contactMap['account_number'] = contact.accountNumber;
 

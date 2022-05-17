@@ -6,12 +6,12 @@ import 'models/contact.dart';
 
 void main() {
   runApp(const Bytebank());
-
-  WidgetsFlutterBinding.ensureInitialized();
-
-  save(Contact(4, 'Liana', 23000)).then((id) {
-    debugPrint('Id: $id');
-  });
+  // save(Contact(4, 'Will', 23000)).then((id) {
+  //   debugPrint('Id: $id');
+  // });
+  // save(Contact(4, 'Ariane', 6666)).then((id) {
+  //   debugPrint('Id: $id');
+  // });
   /*  save(
     Transaction(
       12350.0,
