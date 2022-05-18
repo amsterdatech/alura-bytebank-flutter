@@ -21,38 +21,45 @@ class Dashboard extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Image.asset('images/bytebank_logo.png'),
           ),
-          Row(
-            children: [
-               DashboardItem(
-                label: 'Contacts',
-                iconData: Icons.people,
-                onClick: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => ContactList(),
-                    ),
-                  );
-                },
-              ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                 DashboardItem(
+                  label: 'Contacts',
+                  iconData: Icons.people,
+                  onClick: () {
+                    _showContactList(context);
+                  },
+                ),
 
-               DashboardItem(
-                label: 'Transfer',
-                iconData: Icons.monetization_on,
-                 onClick: (){
+                 DashboardItem(
+                  label: 'Transfer',
+                  iconData: Icons.monetization_on,
+                   onClick: (){
 
-                 },
-              ),
+                   },
+                ),
 
-               DashboardItem(
-                label: 'Transaction Feed',
-                iconData: Icons.description,
-                 onClick: (){
+                 DashboardItem(
+                  label: 'Transaction Feed',
+                  iconData: Icons.description,
+                   onClick: (){
 
-                 },
-              ),
-            ],
+                   },
+                ),
+              ],
+            ),
           )
         ],
+      ),
+    );
+  }
+
+  void _showContactList(BuildContext context) {
+         Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => ContactList(),
       ),
     );
   }
