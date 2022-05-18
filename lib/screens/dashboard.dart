@@ -1,3 +1,4 @@
+import 'package:bytebank/screens/transferencia/transactions_list.dart';
 import 'package:flutter/material.dart';
 
 import 'contacts/contacts_list.dart';
@@ -26,28 +27,24 @@ class Dashboard extends StatelessWidget {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                 DashboardItem(
+                DashboardItem(
                   label: 'Contacts',
                   iconData: Icons.people,
                   onClick: () {
                     _showContactList(context);
                   },
                 ),
-
-                 DashboardItem(
+                DashboardItem(
                   label: 'Transfer',
                   iconData: Icons.monetization_on,
-                   onClick: (){
-
-                   },
+                  onClick: () {},
                 ),
-
-                 DashboardItem(
+                DashboardItem(
                   label: 'Transaction Feed',
                   iconData: Icons.description,
-                   onClick: (){
-
-                   },
+                  onClick: () {
+                    _showTransactionList(context);
+                  },
                 ),
               ],
             ),
@@ -58,11 +55,17 @@ class Dashboard extends StatelessWidget {
   }
 
   void _showContactList(BuildContext context) {
-         Navigator.of(context).push(
+    Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => ContactList(),
       ),
     );
+  }
+
+  void _showTransactionList(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => TransactionList(),
+    ));
   }
 }
 
@@ -71,7 +74,11 @@ class DashboardItem extends StatelessWidget {
   final IconData iconData;
   final Function onClick;
 
-  const DashboardItem({Key? key, required this.label, required this.iconData, required this.onClick})
+  const DashboardItem(
+      {Key? key,
+      required this.label,
+      required this.iconData,
+      required this.onClick})
       : super(key: key);
 
   @override
