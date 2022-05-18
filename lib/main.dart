@@ -8,9 +8,9 @@ import 'models/contact.dart';
 
 void main() {
   runApp(const Bytebank());
-  ContactDao().findAll().then((transactions) {
-    debugPrint('transactions: $transactions');
-  });
+  // ContactDao().findAll().then((transactions) {
+  //   debugPrint('transactions: $transactions');
+  // });
 
   findAll();
 }
