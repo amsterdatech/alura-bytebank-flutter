@@ -7,12 +7,6 @@ import 'models/contact.dart';
 
 void main() {
   runApp(const Bytebank());
-  // ContactDao().findAll().then((transactions) {
-  //   debugPrint('transactions: $transactions');
-  // });
-  save(Transaction(200.0, Contact('Will', 6666)))
-      .then((transaction) => print(transaction));
-  // findAll().then((transactions) => print('new transactions $transactions'));
 }
 
 class Bytebank extends StatelessWidget {
