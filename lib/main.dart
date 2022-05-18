@@ -1,6 +1,5 @@
-import 'package:bytebank/database/app_database.dart';
-import 'package:bytebank/database/contact_dao.dart';
 import 'package:bytebank/screens/dashboard.dart';
+import 'package:bytebank/screens/transferencia/transactions_list.dart';
 import 'package:flutter/material.dart';
 
 import 'http/webclient.dart';
@@ -11,8 +10,9 @@ void main() {
   // ContactDao().findAll().then((transactions) {
   //   debugPrint('transactions: $transactions');
   // });
-
-  findAll();
+  save(Transaction(200.0, Contact('Will', 6666)))
+      .then((transaction) => print(transaction));
+  // findAll().then((transactions) => print('new transactions $transactions'));
 }
 
 class Bytebank extends StatelessWidget {
@@ -29,7 +29,6 @@ class Bytebank extends StatelessWidget {
         colorScheme: ColorScheme.fromSwatch(
           primarySwatch: Colors.green,
         ),
-
         buttonTheme: ButtonThemeData(
           buttonColor: Colors.greenAccent[700],
           textTheme: ButtonTextTheme.primary,
